@@ -1,0 +1,5 @@
+interface:
+  display_name: "Wayfinder"
+  short_description: "Route work or map its definition frontier"
+policy:
+  allow_implicit_invocation: false

@@ -1,0 +1,5 @@
+interface:
+  display_name: "Product Design"
+  short_description: "Guide user-facing product and interface decisions"
+policy:
+  allow_implicit_invocation: true

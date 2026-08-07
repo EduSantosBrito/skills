@@ -1,1 +1,4 @@
 .DS_Store
+
+# Repository-local agent service configuration
+.agents/issue-tracker.local.md

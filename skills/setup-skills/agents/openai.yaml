@@ -1,0 +1,5 @@
+interface:
+  display_name: "Setup Skills"
+  short_description: "Configure the Wayfinder-led workflow"
+policy:
+  allow_implicit_invocation: false
