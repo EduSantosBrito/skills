@@ -1,0 +1,5 @@
+interface:
+  display_name: "You Lost Me"
+  short_description: "Re-pitch that in my language, with missing context"
+policy:
+  allow_implicit_invocation: false
