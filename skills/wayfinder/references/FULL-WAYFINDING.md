@@ -121,6 +121,16 @@ Charting does not implement the destination or silently resolve HITL decisions.
 
 Other sessions may update the tracker concurrently; re-read relevant state before mutating it.
 
+## Interactive pause
+
+A live HITL exchange remains in the current session. When progress requires the user's decision, clarification, or authorization:
+
+1. Ask the smallest coherent set of questions and explain only the materially relevant alternatives or recommendation.
+2. Make the questions and requested reply the final content of the response.
+3. Resume the current ticket after the user replies; record the resolution, update the map, and continue the frontier.
+
+This response is **Awaiting user**: the open exchange is the continuation mechanism. It has no `Next step` heading, fresh-session instruction, or skill command. Use `Localized handoff` only when no user reply is pending and the current session has reached a completion boundary.
+
 ## Definition-ready criterion
 
 The map is definition-ready when a fresh `to-spec` session can specify the work without guessing the problem, outcome, actors, user-visible scope, authority, material constraints, or human decisions. Remaining uncertainty must be assigned to a downstream owner and must not be capable of materially redefining the work.
@@ -131,7 +141,7 @@ Open technical questions do not keep the map in progress. An unresolved definiti
 
 Use the map's language and locale.
 
-While definition decisions remain, end with the localized equivalent of:
+When no user reply is pending, the current session has reached a completion boundary, and definition decisions remain, end with the localized equivalent of:
 
 ```markdown
 ## Next step
@@ -143,7 +153,7 @@ Start a fresh session and run:
 `<invoke wayfinder using the active client syntax> Continue <map-url>. Take the next unblocked definition decision.`
 ```
 
-When definition is ready, end with the localized equivalent of:
+When no user reply is pending and definition is ready, end with the localized equivalent of:
 
 ```markdown
 ## Next step

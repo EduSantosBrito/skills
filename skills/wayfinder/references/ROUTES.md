@@ -71,7 +71,7 @@ Mention only identifiers materially connected to the problem. Do not add a stand
 
 ## Route report
 
-Use the user's language and locale:
+Use the user's language and locale. In **Awaiting user** mode, include the route and rationale, then make the pending questions and requested reply the final content. In **Handoff** mode, use:
 
 ```markdown
 ## <localized equivalent of “Route”>

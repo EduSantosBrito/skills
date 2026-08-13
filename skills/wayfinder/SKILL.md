@@ -63,12 +63,15 @@ State:
 
 Standards are reasoning lenses, not a claim of certification or formal conformity. Do not reproduce or invent clauses.
 
-## 5. Hand off
+## 5. Pause or hand off
 
-End every run with a localized heading equivalent to `Next step`, followed by the localized equivalent of:
+End each response in exactly one terminal mode:
 
-> Start a fresh session and run:
+- **Awaiting user:** the response asks the user for a routing clarification, authorization, or material decision needed to continue the current work. Keep the work in the current session. Make the questions, options, and requested reply the final content, then resume after the user answers. This is a paused response, not a completed phase; it has no `Next step` heading or skill command.
+- **Handoff:** the current phase has reached a completion boundary with no user reply pending. End with a localized heading equivalent to `Next step`, followed by the localized equivalent of:
 
-Then provide exactly one copyable command using the active client's real invocation syntax. Preserve the skill name and localize its argument. Prefer an existing artifact pointer; otherwise include a compact, self-contained brief. Never emit a `/<name>` alias when the active client requires `/skill:<name>`.
+  > Start a fresh session and run:
 
-A direct routing run is complete when that command lets a fresh session begin without guessing material context. A full-wayfinding run uses the completion and handoff rules in `references/FULL-WAYFINDING.md`.
+  Then provide exactly one copyable command using the active client's real invocation syntax. Preserve the skill name and localize its argument. Prefer an existing artifact pointer; otherwise include a compact, self-contained brief. Never emit a `/<name>` alias when the active client requires `/skill:<name>`.
+
+A direct routing run is complete when its handoff command lets a fresh session begin without guessing material context. A full-wayfinding run uses the interactive-pause, completion, and handoff rules in `references/FULL-WAYFINDING.md`.
