@@ -1,5 +1,5 @@
 interface:
   display_name: "Explore"
-  short_description: "Visual end-to-end walkthrough with source evidence"
+  short_description: "Classify and trace how software works read-only"
 policy:
   allow_implicit_invocation: false

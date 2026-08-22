@@ -3,6 +3,8 @@ name: you-lost-me
 description: Re-pitch an explanation that did not land, in the user's language and with the applicable plain-language standard.
 disable-model-invocation: true
 license: MIT
+metadata:
+  opencode/autoinvoke: false
 ---
 
 I don't understand where you've got to here.

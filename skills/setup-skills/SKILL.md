@@ -1,133 +1,117 @@
 ---
 name: setup-skills
-description: Configure a repository for the Wayfinder-led workflow, including its issue tracker, triage vocabulary, domain docs, workflow contract, and Hunk review integration. Run once before first use.
+description: Configure a repository for the Wayfinder-led workflow, including explicit artifact sources and locations, runtime capabilities, triage vocabulary, domain docs, and review integration. Run explicitly before first workflow use.
 disable-model-invocation: true
+license: MIT
+metadata:
+  opencode/autoinvoke: false
 ---
 
 # Setup Skills
 
-Scaffold the per-repo configuration that the Wayfinder-led workflow assumes:
+Bootstrap repository configuration without installing skills globally. This is an explicit pre-workflow command, not a workflow entrypoint: after bootstrap, every piece of work starts with `wayfinder`.
 
-- **Workflow** — Wayfinder as the universal entry point, stage depth, automatic research, localized handoffs, and custom-skill priority
-- **Issue tracker** — where maps, decisions, specs, and tickets live
-- **Triage labels** — the strings used for the five canonical triage roles
-- **Domain docs** — where `CONTEXT.md` and ADRs live, and the consumer rules for reading them
-- **Review integration** — Hunk as the interface for `code-review`
+Resolve this skill's own installed directory through the active client's skill discovery. Resolve the active `wayfinder` provider through the same discovery interface and read its `references/ROUTES.md`; that table is authoritative for route owners, requirements, blockers, and fallbacks. Read [`artifact-sources.md`](artifact-sources.md) and selected convention templates relative to the discovered setup directory. Never look for a `skills/` directory in the consumer repository or infer availability from package contents. A configured repository has a project-specific artifact-source index and approved workflow, domain, issue-tracker, and optional triage guidance.
 
-This is a prompt-driven skill, not a deterministic script. Explore, present what you found, confirm with the user, then write.
+## 1. Validate and explore
 
-## Process
+Before asking questions or drafting files:
 
-### 1. Explore
+1. Require capability `skill-provider-discovery`; require the discovered `setup-skills` and `wayfinder` sources, `ROUTES.md`, artifact-source template, and selected convention templates to be contained regular files under their owning provider roots after realpath resolution. Missing discovery or an invalid source blocks setup.
+2. Read `ROUTES.md` directly. Validate that each route has an owner or action, every skill and capability ID is syntactically valid, every requirement has a blocker or fallback, and no entry contains a source-repository path or static availability claim. Treat `research`, `to-spec`, and `implement` as blocked when absent, with no upstream fallback; require Hunk `>=0.18.1` and exactly two concurrent background subagents for `code-review`.
+3. Inspect remotes, `.git/config`, root `AGENTS.md` or `CLAUDE.md`, `.agents/`, `.gitignore`, domain/context docs, existing artifact directories, monorepo signals, declared local overrides, and declared dependencies.
+4. Ask the active client's catalog or discovery interface for every logical skill ID and runtime capability ID cited by `ROUTES.md`. IDs are the required discovery evidence. Also verify this skill's own requirements directly: provider locations can be resolved, packaged sources can be read, and approved project files can be written with contained project-relative paths. Record the winning provider or location when exposed; treat origin, scope, precedence, and overlapping-provider details as optional diagnostics. Do not hard-code client names, global directories, command syntax, or installation layouts.
+5. Probe Hunk with `hunk --version` and `hunk skill path`, and confirm whether the runtime can launch exactly two concurrent background subagents. Record missing review capability as a blocker; do not install or invent a fallback.
+6. Resolve every route owner and requirement against discovery, applying only the fallback declared in `ROUTES.md`. Mark a route blocked when neither its owner nor fallback resolves; selective installation is never inferred from package contents or persisted as a presence claim.
+7. Classify every target as absent, literal-template-identical, generated-from-template, or customized. Never treat a customized `.agents/*`, `AGENTS.md`, or `CLAUDE.md` as safe to replace.
 
-Look at the current repo to understand its starting state. Read whatever exists; don't assume:
+Exploration is complete when every route requirement and every proposed target has a known state. Do not mutate repository files during this step.
 
-- `git remote -v` and `.git/config` — is this a GitHub repo? Which one?
-- `AGENTS.md` and `CLAUDE.md` at the repo root — does either exist? Is there already an `## Agent skills` section in either?
-- `CONTEXT.md` and `CONTEXT-MAP.md` at the repo root
-- `docs/adr/` and any `src/*/docs/adr/` directories
-- `.agents/` — does this skill's prior output already exist, including `workflow.md` and an optional gitignored `issue-tracker.local.md`?
-- `.scratch/` — sign that a local-markdown issue tracker convention is already in use
-- Are the custom `wayfinder`, `explore`, `you-lost-me`, `product-design`, and `code-review` skills available, and do they take precedence over conflicting global skills?
-- Run `hunk skill path` to verify that the Hunk review skill is available; record a missing command as a setup gap rather than installing it silently.
-- Is the `triage` skill installed? (a `triage` skill folder alongside this one, or `triage` in your available skills.) This decides whether Section B runs at all.
-- Monorepo signals — a `pnpm-workspace.yaml`, a `workspaces` field in `package.json`, or a populated `packages/*` with its own `src/`. Present only in a genuinely large multi-package repo; their absence means single-context, which is almost every repo.
+## 2. Select sources and locations explicitly
 
-### 2. Present findings and ask
+Present repository evidence first. Ask separately, one answer at a time, and record both the source and the concrete location or selector.
 
-Summarise what's present and what's missing. Then take the sections in order — one section, one answer, then the next.
+### A. Tasks, maps, and tickets
 
-Lead each section with the recommended answer so the user can accept it in a word. Give a one-line explainer only when the choice genuinely branches; skip the section entirely when exploration already settled it (Section B when `triage` isn't installed, Section C when there's no monorepo).
+Ask for the system: Linear, GitHub, GitLab, Local, or Other. Then ask for the concrete workspace/repository/project/team/path and convention owner that repository evidence did not establish. This source owns intake, Wayfinder maps, decision tickets, and implementation tickets; it never owns specifications or research merely because the same provider could store them.
 
-**Section A — Issue tracker.**
+Use the matching `issue-tracker-*.md` template. For Linear, the draft set must include `.agents/issue-tracker.md`; use optional `.agents/issue-tracker.local.md` only for non-secret project selectors. For Other, draft one dedicated convention file under `.agents/`.
 
-> Explainer: The "issue tracker" is where issues live for this repo. Skills like `to-tickets`, `triage`, and `to-spec` read from and write to it — they need to know whether to call `gh issue create`, write a markdown file under `.scratch/`, or follow some other workflow you describe. Pick the place you actually track work for this repo.
+### B. Specifications
 
-Default posture: these skills were designed for GitHub. If a `git remote` points at GitHub, propose that. If a `git remote` points at GitLab (`gitlab.com` or a self-hosted host), propose GitLab. Otherwise (or if the user prefers), offer:
+Ask for the source type and exact durable location independently. For a local source, propose an existing project-relative path or `docs/specs/`; never emit an absolute path or a package-relative `skills/` path. For a remote source, identify its dedicated convention owner. Do not silently inherit the task tracker.
 
-- **GitHub** — issues live in the repo's GitHub Issues (uses the `gh` CLI)
-- **GitLab** — issues live in the repo's GitLab Issues (uses the [`glab`](https://gitlab.com/gitlab-org/cli) CLI)
-- **Linear** — issues live in a configured Linear workspace and team; use the official Linear MCP server by default
-- **Local markdown** — issues live as files under `.scratch/<feature>/` in this repo (good for solo projects or repos without a remote)
-- **Other** (Jira, Shortcut, etc.) — ask the user to describe the workflow in one paragraph; the skill will record it as freeform prose
+### C. Research
 
-For Linear, read [issue-tracker-linear.md](./issue-tracker-linear.md), then invoke `/wizard` to generate a **temporary** setup wizard in the operating system's temp directory. The wizard guides the human through the official MCP OAuth flow, workspace/team/project selection, capability verification, and any approved label or state setup. After selecting the team, derive a proposed project name from the repository, list the team's active existing projects, and offer three explicit choices: create the proposed project, use an existing project, or use no project. Ask before creating a project. Prefer `https://mcp.linear.app/mcp`; use a scoped personal API key and `https://api.linear.app/graphql` only when the current client cannot use the required MCP operation. Keep credentials out of repository docs and the generated script, verify the configured access, then delete the wizard. Do not commit it.
+Ask for the source type and exact durable location independently. For a local source, propose an existing project-relative path or `docs/research/`; never emit an absolute path or a package-relative `skills/` path. For a remote source, identify its dedicated convention owner. Do not silently inherit either earlier answer.
 
-Record the choice in `.agents/issue-tracker.md`. For Linear, keep public conventions there and write concrete workspace, team, project, actor, state IDs, and capability results to `.agents/issue-tracker.local.md`; add only that local file to `.gitignore`. Keep credentials in the client's secret store, never in either file. The GitHub and GitLab templates carry a "PRs as a request surface" flag, defaulted **off** — leave it off and don't raise it; a user who wants external PRs in the triage queue can flip the flag in the file later.
+### D. Domain docs
 
-**Section B — Triage label vocabulary.** Skip this section entirely if the `triage` skill isn't installed (exploration told you) — an uninstalled skill needs no labels.
+Ask for the source type and separate domain-context and architecture-decision locations, then whether the repository uses the single-context layout from [`domain.md`](domain.md) or a multi-context layout justified by observed monorepo boundaries. For a single-context local source, propose `CONTEXT.md` and `docs/decisions/`. Local locations are safe project-relative paths and are owned by `.agents/domain.md`.
 
-If it is installed, ask exactly one question:
+Render [`artifact-sources.md`](artifact-sources.md) into `.agents/artifact-sources.md` as a thin index with one ownership row for tasks/maps/tickets, specs, research, domain context, and architecture decisions. Replace every placeholder. Each row must name its source type, concrete safe project-relative location or remote selector, one operable convention owner, and a presence contract. Use `optional` when a local path may not exist until its first artifact, `present` when setup observed it, `required` only when the selected source contract requires it, and `n/a` for remote selectors. A convention owner is a generated `.agents/` file or a logical `skill:<id>` resolved by discovery.
 
-> Do you want to keep the default triage labels? (recommended: **yes**)
+## 3. Cross the wizard boundary when required
 
-The defaults are the five canonical roles, each label string equal to its name: `needs-triage`, `needs-info`, `ready-for-agent`, `ready-for-human`, `wontfix`. On **yes**, write them as-is. Only if the user says no — usually because their tracker already uses other names (e.g. `bug:triage` for `needs-triage`) — collect the overrides so `triage` applies existing labels instead of creating duplicates.
+If a selected provider requires human-only authentication or dashboard work, do not invoke `wizard` inside this setup session. Finish the current phase with a self-contained handoff to a fresh `wizard` session using the active client's syntax. Include the provider, required discoveries, allowed effects, authorization requirements, and the exact information setup needs on return.
 
-**Section C — Domain docs.** Default to **single-context** — one `CONTEXT.md` + `docs/adr/` at the repo root. This fits almost every repo; write it without asking.
+The wizard owns only the human procedure. It must:
 
-Offer **multi-context** — a root `CONTEXT-MAP.md` pointing to per-context `CONTEXT.md` files — only when exploration found monorepo signals. Then confirm which layout they want.
+- request explicit authorization immediately before creating or changing any external record;
+- finish with either a durable, non-secret result pointer or an inline self-contained result brief;
+- create no transient repository handoff file;
+- delete any temporary script from the operating system's temporary directory after success;
+- hand off to a fresh `setup-skills` session in resume mode.
 
-### 3. Confirm and edit
+On resume, re-read repository status and the result. Do not assume the workspace stayed unchanged. The resumed setup session owns all repository configuration drafts and writes.
 
-Show the user a draft of:
+## 4. Select optional conventions
 
-- The `## Agent skills` block to add to whichever of `CLAUDE.md` / `AGENTS.md` is being edited (see step 4 for selection rules)
-- The contents of `.agents/workflow.md`, `.agents/issue-tracker.md`, `.agents/domain.md`, and `.agents/triage-labels.md` (the last only when `triage` is installed)
-- For Linear, the concrete non-secret configuration to write to gitignored `.agents/issue-tracker.local.md`
+When `triage` is available, ask whether to keep the five canonical labels: `needs-triage`, `needs-info`, `ready-for-agent`, `ready-for-human`, and `wontfix`. Use [`triage-labels.md`](triage-labels.md) on yes; on no, collect only explicit mappings. Skip triage configuration when that dependency is unavailable.
 
-Let them edit before writing.
+For Linear, use [`issue-tracker-linear.md`](issue-tracker-linear.md) for public Linear artifact conventions and [`issue-tracker-linear.local.md`](issue-tracker-linear.local.md) as the shape of non-secret local selectors. Keep credentials in the client secret store. The GitHub and GitLab templates keep request-surface support off unless the user explicitly changes it.
 
-### 4. Write
+## 5. Draft, diff, and approve
 
-**Pick the file to edit:**
+Build complete proposed contents for:
 
-- If `CLAUDE.md` exists, edit it.
-- Else if `AGENTS.md` exists, edit it.
-- If neither exists, ask the user which one to create — don't pick for them.
+- the existing `## Agent skills` block, or the user-selected root guidance file when neither exists;
+- `.agents/artifact-sources.md`;
+- each selected source-convention file;
+- `.agents/workflow.md`, `.agents/domain.md`, and optional `.agents/triage-labels.md`;
+- non-secret local provider configuration.
 
-Never create `AGENTS.md` when `CLAUDE.md` already exists (or vice versa) — always edit the one that's already there.
+Show the complete draft and a target-by-target diff before writing any file, including absent-file drafts and generated artifact-source content. Ask for explicit approval in the same session. Preserve all surrounding user content. If a target is customized, identify the conflicting regions and require explicit approval for the exact replacement; otherwise block. Never perform an automatic merge whose safety cannot be demonstrated. Do not silently overwrite any `.agents/*`, `AGENTS.md`, or `CLAUDE.md` file.
 
-If an `## Agent skills` block already exists in the chosen file, update its contents in-place rather than appending a duplicate. Don't overwrite user edits to the surrounding sections.
+A temporary backup may exist outside the repository for recovery during this same setup session. It is not a handoff artifact and must not be referenced as durable state.
 
-The block:
+The approval pause remains in this session. Approval of repository drafts does not authorize external effects.
 
-```markdown
-## Agent skills
+## 6. Write after approval
 
-### Workflow
+Only after the complete draft is approved:
 
-Start every piece of work with the `wayfinder` skill, using the active client's invocation syntax. See `.agents/workflow.md`.
+1. update the selected root guidance block in place;
+2. write the approved generated artifact-source index and source convention files, including `.agents/issue-tracker.md` when Linear is selected;
+3. write `.agents/workflow.md` byte for byte from [`workflow.md`](workflow.md);
+4. write `.agents/domain.md` and the approved selected issue-tracker and triage conventions byte for byte from their templates;
+5. write provider-local non-secret selectors when approved and add only their declared local path to `.gitignore` when required.
 
-### Issue tracker
+Require byte identity only for files declared as literal copies: the workflow guide, domain guide, selected issue-tracker convention, and selected triage convention. The artifact-source template is a schema with placeholders; its projection must differ after rendering. Use seed templates only for selected branches. Write only portable projections under `.agents/`; do not copy package paths into them. Do not stage, commit, push, install dependencies, or create a transient handoff file.
 
-[one-line summary of where issues are tracked]. See `.agents/issue-tracker.md`.
+## 7. Verify and finish
 
-### Triage labels
+Verify:
 
-[one-line summary of the label vocabulary]. See `.agents/triage-labels.md`.
+1. `ROUTES.md` is readable from the discovered `wayfinder` provider and every cited skill and capability ID is available, resolves its declared fallback, or is explicitly blocked;
+2. every packaged source, projected index, YAML file, and relative Markdown link is a regular file contained by its owning root after realpath resolution;
+3. discovery includes winning provider or location only when the client exposes it and contains no inferred static presence claim;
+4. literal-copy template/projection pairs are byte-identical, while `.agents/artifact-sources.md` contains no template placeholder;
+5. the artifact index records explicit, non-overlapping ownership, source types, safe project-relative local locations, presence contracts, and operable convention owners; optional paths may be absent, while present or required paths exist;
+6. Linear selection projected `.agents/issue-tracker.md`;
+7. required runtime blockers are reported, especially Hunk `>=0.18.1` and exactly two background subagents for `code-review`;
+8. optional local configuration, when present, is a contained regular file and contains no credential; its absence does not block a clean clone or CI;
+9. customized user content remains preserved;
+10. only intended repository files changed.
 
-### Domain docs
-
-[one-line summary of layout — "single-context" or "multi-context"]. See `.agents/domain.md`.
-```
-
-Include the `### Triage labels` sub-block, and write `.agents/triage-labels.md`, only when `triage` is installed and Section B ran. When it isn't, both are omitted.
-
-Then write the docs files using the seed templates in this skill folder as a starting point:
-
-- [workflow.md](./workflow.md) — Wayfinder-led workflow, stage ownership, handoffs, research, and review integration
-- [issue-tracker-github.md](./issue-tracker-github.md) — GitHub issue tracker
-- [issue-tracker-gitlab.md](./issue-tracker-gitlab.md) — GitLab issue tracker
-- [issue-tracker-linear.md](./issue-tracker-linear.md) — public Linear conventions through official MCP with GraphQL fallback
-- [issue-tracker-linear.local.md](./issue-tracker-linear.local.md) — gitignored concrete Linear identifiers and verified capabilities
-- [issue-tracker-local.md](./issue-tracker-local.md) — local-markdown issue tracker
-- [triage-labels.md](./triage-labels.md) — label mapping (only if `triage` is installed)
-- [domain.md](./domain.md) — domain doc consumer rules + layout
-
-For Linear, write both tracker files and add the exact path `.agents/issue-tracker.local.md` to `.gitignore`; keep the rest of `.agents/` versioned.
-
-For "other" issue trackers, write `.agents/issue-tracker.md` from scratch using the user's description.
-
-### 5. Done
-
-Tell the user the setup is complete and which skills will now read from these files. Confirm whether Hunk was found and that custom skills take precedence in the configured installation. Mention they can edit `.agents/*.md` directly later — re-running this skill is only necessary when the tracker, workflow contract, review integration, or domain layout changes materially.
+Report selected sources and locations, discovered skill and capability IDs, any winning-provider or location details the client exposed, blocked routes, and the exact repository state. Setup is complete only when the generated artifact-source index and approved guidance projections exist. Thereafter, workflow work starts with `wayfinder`; rerun this bootstrap only when configuration changes materially.

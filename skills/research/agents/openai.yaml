@@ -1,0 +1,5 @@
+interface:
+  display_name: "Research"
+  short_description: "Investigate broad why questions with cited evidence"
+policy:
+  allow_implicit_invocation: true

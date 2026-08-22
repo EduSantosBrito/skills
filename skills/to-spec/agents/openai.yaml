@@ -1,0 +1,5 @@
+interface:
+  display_name: "To Spec"
+  short_description: "Gate a definition and publish its spec"
+policy:
+  allow_implicit_invocation: false

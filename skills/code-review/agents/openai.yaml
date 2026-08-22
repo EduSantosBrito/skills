@@ -1,3 +1,5 @@
 interface:
   display_name: "Code Review"
-  short_description: "Review a Hunk diff on standards and spec"
+  short_description: "Review a Hunk working tree on standards and spec"
+policy:
+  allow_implicit_invocation: false

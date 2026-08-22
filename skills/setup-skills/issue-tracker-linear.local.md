@@ -31,4 +31,4 @@ capabilities:
 verified-at: <YYYY-MM-DD or never>
 ```
 
-Record IDs discovered from the selected team. Linear workflow states are team-specific; never infer IDs from display names. Re-run `/setup-skills` when the selected workspace, team, project, claim convention, access method, or required MCP capabilities change materially.
+Record IDs discovered from the selected team. Linear workflow states are team-specific; never infer IDs from display names. Run a new explicit `setup-skills` bootstrap session, using the active client's syntax, when the selected workspace, team, project, claim convention, access method, or required MCP capabilities change materially.

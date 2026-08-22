@@ -2,11 +2,11 @@
 
 ### Workflow
 
-Start every piece of work with the `wayfinder` skill, using the active client's invocation syntax. See `.agents/workflow.md`.
+After bootstrap, start every piece of work with the `wayfinder` skill, using the active client's invocation syntax. `setup-skills` is the sole bootstrap exception before the workflow is configured. See `.agents/workflow.md`.
 
-### Issue tracker
+### Artifact sources
 
-Issues and workflow artifacts live in Linear. See `.agents/issue-tracker.md` for public conventions and its gitignored local configuration pointer.
+Tasks, maps, and tickets live in Linear. Specs live in `docs/specs/`, research in `docs/research/`, domain context in `CONTEXT.md`, and architecture decisions in `docs/decisions/`. Read `.agents/artifact-sources.md` for locations, presence contracts, and convention pointers.
 
 ### Triage labels
 

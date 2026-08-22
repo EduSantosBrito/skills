@@ -2,11 +2,11 @@
 
 Adapted from Matt Pocock's [`wayfinder`](https://github.com/mattpocock/skills/blob/84fdeffd12f2ee307994d1eb6feb48173b6e0502/skills/engineering/wayfinder/SKILL.md) at commit `84fdeffd12f2ee307994d1eb6feb48173b6e0502`.
 
-Use this branch when the route from a loose idea to a durable specification is obscured by definition decisions. It charts a shared map of **decision tickets** and resolves the definition frontier. It produces decisions, not implementation deliverables.
+Use this branch when definition decisions obscure the route from a loose idea to a durable specification. It resolves a shared frontier of decision tickets. It produces definition decisions, not implementation deliverables.
 
 ## Definition depth
 
-Wayfinding may go as deep as necessary into:
+Wayfinding owns:
 
 - the problem and desired outcome;
 - actors and shared domain language;
@@ -15,22 +15,22 @@ Wayfinding may go as deep as necessary into:
 - constraints, trade-offs, material risks, and impacts;
 - decisions whose alternatives would materially change the specification.
 
-Apply the stage-ownership contract in [`ROUTES.md`](ROUTES.md). A question belongs in the definition frontier when materially different answers would change the destination, user-visible scope, authority, acceptance, material risk, or a costly-to-reverse commitment. Otherwise put it in `Deferred downstream` with its owner.
+Apply the ownership contract in [`ROUTES.md`](ROUTES.md). A question belongs on the definition frontier when materially different answers would change the destination, user-visible scope, authority, acceptance, material risk, or a costly-to-reverse commitment. Put other in-scope questions in `Deferred downstream` with their owner.
 
 ### Product-design decisions
 
-When the destination changes a user-facing experience, record `product-design` as a specialist lens in the map's `Notes`. Keep these decisions at their owning depth:
+When the destination changes a user-facing experience, record `product-design` as a specialist lens in `Notes`:
 
 - **Wayfinder:** audience, valuable outcome, journey scope, experience authority, protected redesign contracts, and costly-to-reverse brand or trust decisions.
 - **Prototype:** visual, interaction, motion, or density alternatives that must be experienced to resolve one decision.
-- **to-spec:** hierarchy, behavior, states, responsive rules, accessibility, recovery, content contracts, and validation criteria.
+- **to-spec:** hierarchy, behaviour, states, responsive rules, accessibility, recovery, content contracts, and validation criteria.
 - **implement:** file placement, component composition, framework APIs, utility classes, and reversible choices governed by the existing system.
 
-A request to make an interface “modern,” “premium,” or “better” does not authorize a visual overhaul. When preserve and overhaul are materially different destinations, keep that decision on the definition frontier.
+A request to make an interface “modern,” “premium,” or “better” does not authorize an overhaul. Keep preserve-versus-overhaul on the frontier when it materially changes the destination.
 
 ## The map
 
-The map is the canonical low-resolution index on the configured issue tracker. Decisions live once, in their tickets; the map links and gists them.
+Read `.agents/artifact-sources.md`. Prepare the canonical low-resolution map for the configured tasks/maps/tickets source. Decisions live once in their tickets or linked durable findings; the map keeps links and one-line gists. If the source is external, draft the map first and obtain explicit authorization immediately before creating it.
 
 ```markdown
 ## Destination
@@ -39,11 +39,11 @@ The map is the canonical low-resolution index on the configured issue tracker. D
 
 ## Language and locale
 
-<inferred language and locale for every user-facing artifact and handoff>
+<language and locale for user-facing artifacts and handoffs>
 
 ## Notes
 
-<domain, standing constraints, specialist lenses such as `product-design`, and skills later sessions should consult>
+<domain, standing constraints, specialist lenses, and later skills to consult>
 
 ## Decisions so far
 
@@ -51,7 +51,7 @@ The map is the canonical low-resolution index on the configured issue tracker. D
 
 ## Not yet specified
 
-<definition fog that is in scope but cannot yet be stated as a precise question>
+<definition fog that cannot yet be stated as a precise question>
 
 ## Deferred downstream
 
@@ -68,11 +68,11 @@ The map is the canonical low-resolution index on the configured issue tracker. D
 <definition in progress | definition ready>
 ```
 
-Always create a durable map or minimal definition brief. A small clear effort may be definition-ready immediately and need no child tickets, but a fresh `/to-spec` session still needs a source.
+Create a durable map or minimal definition brief. A small clear effort may be definition-ready without child tickets, but a fresh `to-spec` session still needs the durable pointer.
 
 ## Decision tickets
 
-Each child issue carries one definition decision or a tightly coupled decision packet that must be answered together:
+Each child holds one definition decision or a tightly coupled packet:
 
 ```markdown
 ## Question
@@ -81,67 +81,69 @@ Each child issue carries one definition decision or a tightly coupled decision p
 
 ## Why now
 
-<how materially different answers would change the definition>
+<how materially different answers change the definition>
 ```
 
-Refer to tickets by linked name in human-facing text, never by bare identifier. Claim a ticket before working it so concurrent sessions skip it. Use the tracker's native blocking relationship; the **frontier** is every open, unblocked, unclaimed child.
+Refer to tickets by linked name in human-facing text. Claim before working so concurrent sessions skip claimed work. Use the source's native blocking relationship. The **frontier** is every open, unblocked, unclaimed child.
 
-Use the original ticket types:
+Ticket types:
 
-- **Research (AFK):** a fact from primary sources blocks a definition decision.
-- **Prototype (HITL):** a rough runnable or visible artifact is needed to decide how something should behave or look.
-- **Grilling (HITL):** the user must make a decision; invoke grilling and domain modeling together where a working directory can retain the vocabulary.
-- **Task (AFK or HITL):** work must be completed before a definition decision can be made.
+- **Research (AFK):** broad **why** evidence from primary sources blocks definition. Store the finding in the configured research source and link it from the ticket.
+- **Explore (AFK):** a repository-grounded **how** trace is needed. It may escalate an unresolved rationale question to Research.
+- **Prototype (HITL):** a rough runnable or visible artifact is needed to decide behaviour or appearance.
+- **Grilling (HITL):** the user must make a definition decision; apply domain modeling when the workspace can retain resolved vocabulary.
+- **Task (AFK or HITL):** another result is required before a definition decision can be made.
 
 ## Fog and deferral
 
-**Fog of war** is definition work you can see coming but cannot yet phrase as a precise question. Resolving a ticket may graduate fog into tickets.
+**Fog of war** is definition work you can see but cannot yet phrase precisely. Resolving a ticket may graduate fog into tickets.
 
-Do not keep downstream detail in the fog. `Deferred downstream` is in scope but owned by a later stage. `Out of scope` is beyond the destination and does not graduate unless the destination changes.
+Downstream detail does not belong in fog. `Deferred downstream` is in scope but owned later. `Out of scope` stays outside unless the destination changes.
 
 ## Chart the map
 
-1. **Name the destination.** Use localized, definition-scoped grilling. Establish common language with domain modeling; retain only terms that affect decisions or prevent ambiguity.
-2. **Map the definition frontier.** Grill breadth-first across actors, scope, authority, constraints, risks, impacts, and material trade-offs. Assign specification and implementation detail downstream as soon as it is recognized.
-3. **Create the map or minimal brief.** Fill the locale, destination, notes, fog, downstream deferrals, exclusions, and status.
-4. **Create precise frontier tickets.** Create tickets first, then wire blocking edges once identifiers exist.
-5. **Dispatch every research ticket automatically.** Research primary sources in parallel and attach durable, cited findings to the ticket or repository convention. Automatic research does not authorize Selenium, Chrome, Playwright, Puppeteer, browser-use, or another real browser; obtain explicit authorization before using one.
-6. **Assess definition readiness.** If no definition decision remains open, mark the map `definition ready`; otherwise stop after charting and hand off the next frontier decision.
+1. **Name the destination.** Use localized definition-depth grilling. Establish only language that affects decisions or prevents ambiguity.
+2. **Map the frontier.** Work breadth-first across actors, scope, authority, constraints, risks, impacts, and material trade-offs. Assign later detail downstream.
+3. **Create the map.** Fill locale, destination, notes, fog, downstream deferrals, exclusions, and status.
+4. **Prepare frontier tickets.** Draft tickets and blocking edges. Before creating or changing any external record, show the proposed effects and obtain explicit authorization at that boundary; then create tickets before relations.
+5. **Dispatch factual work.** Model-invoke `research` for broad why and use `explore` for how. `research` is not a user entrypoint. Each background worker has one ticket, a bounded question, an owner, and a durable destination. Automatic research does not authorize real-browser automation or external record mutation.
+6. **Join before completion.** Wait for every background worker owned by this stage. Record its finding, unresolved question, or blocker and update the map.
+7. **Assess readiness.** If no definition decision remains open, mark `definition ready`; otherwise hand off the next frontier owner.
 
 Charting does not implement the destination or silently resolve HITL decisions.
 
 ## Work the map
 
-1. Load the map at low resolution rather than fetching every ticket.
-2. Take the named ticket or the first frontier ticket and claim it.
-3. Resolve it at definition depth. Zoom into linked decisions only as needed. Facts trigger automatic research; user decisions trigger localized grilling. A tightly coupled decision packet may resolve together.
-4. Post the resolution, close the ticket, and append one linked gist to `Decisions so far`.
-5. Update the frontier: graduate newly precise definition fog, assign downstream decisions, rule exclusions out of scope, and update or remove invalidated tickets.
-6. Reassess readiness from the current state rather than from ticket count.
+1. Load the map at low resolution.
+2. Take the named ticket or first frontier ticket and claim it.
+3. Resolve it at definition depth. Broad rationale uses `research`; system behaviour uses `explore`; user decisions use localized grilling.
+4. Prepare the durable finding, ticket resolution, and linked gist. Ask for explicit authorization immediately before any external create or update, then apply only the authorized mutations.
+5. Update the frontier: graduate precise fog, assign downstream decisions, rule out exclusions, and update invalidated tickets.
+6. Wait for all work owned by the stage, then reassess readiness from current state rather than ticket count.
 
-Other sessions may update the tracker concurrently; re-read relevant state before mutating it.
+Re-read relevant tracker state before mutation when other sessions may update it concurrently. Authorization must still be current at the effect boundary.
 
-## Interactive pause
+## Session and ownership boundaries
 
-A live HITL exchange remains in the current session. When progress requires the user's decision, clarification, or authorization:
+Every transition to another ticket owner or workflow stage starts a fresh session. Background subagents are fresh child sessions; the dispatching stage remains their lifecycle owner and joins all of them before handoff.
 
-1. Ask the smallest coherent set of questions and explain only the materially relevant alternatives or recommendation.
-2. Make the questions and requested reply the final content of the response.
-3. Resume the current ticket after the user replies; record the resolution, update the map, and continue the frontier.
+A live HITL pause remains in its current session. Ask the smallest coherent question set, make the requested reply the final content, and resume after the reply. A paused response has no `Next step` heading or skill command.
 
-This response is **Awaiting user**: the open exchange is the continuation mechanism. It has no `Next step` heading, fresh-session instruction, or skill command. Use `Localized handoff` only when no user reply is pending and the current session has reached a completion boundary.
+Handoffs use a durable artifact pointer from the configured source. When no artifact exists, use an inline self-contained command brief. Never create a transient handoff file.
 
 ## Definition-ready criterion
 
-The map is definition-ready when a fresh `to-spec` session can specify the work without guessing the problem, outcome, actors, user-visible scope, authority, material constraints, or human decisions. Remaining uncertainty must be assigned to a downstream owner and must not be capable of materially redefining the work.
+The map is definition-ready when a fresh `to-spec` session can specify the work without guessing the problem, outcome, actors, user-visible scope, authority, material constraints, or human decisions. Remaining uncertainty has a downstream owner and cannot materially redefine the work.
 
 Open technical questions do not keep the map in progress. An unresolved definition question does.
 
+If `to-spec` later finds a definition gap, it records that gap against this durable artifact and hands back to `wayfinder` in a fresh session. It does not question the user or silently fill the gap.
+
 ## Localized handoff
 
-Use the map's language and locale.
+Use the map's language and locale. Confirm all stage-owned background work is complete.
 
-When no user reply is pending, the current session has reached a completion boundary, and definition decisions remain, end with the localized equivalent of:
+When definition decisions remain, end with the localized equivalent of:
 
 ```markdown
 ## Next step
@@ -150,10 +152,10 @@ The definition frontier is still open.
 
 Start a fresh session and run:
 
-`<invoke wayfinder using the active client syntax> Continue <map-url>. Take the next unblocked definition decision.`
+`<invoke the next frontier owner using the active client syntax> Continue <map pointer>. Resolve <linked ticket name>.`
 ```
 
-When no user reply is pending and definition is ready, end with the localized equivalent of:
+When definition is ready, end with the localized equivalent of:
 
 ```markdown
 ## Next step
@@ -162,5 +164,5 @@ The work is ready for specification. Remaining technical decisions have downstre
 
 Start a fresh session and run:
 
-`<invoke to-spec using the active client syntax> Build the specification from <map-url>. Follow every link under “Decisions so far”. If specification-level information is missing, run a mini grilling session at specification depth; return definition gaps to wayfinder.`
+`<invoke to-spec using the active client syntax> Build the specification from <map pointer>. Follow every link under “Decisions so far”. If definition-level information is missing, record a definition-gap against the map and hand it back to wayfinder in a fresh session.`
 ```

@@ -1,0 +1,5 @@
+interface:
+  display_name: "Create Verification Skill"
+  short_description: "Create or refresh durable endpoint verification"
+policy:
+  allow_implicit_invocation: false
