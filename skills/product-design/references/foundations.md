@@ -5,7 +5,7 @@
 Use this reference for interface structure, component decisions, visual craft, product ethics, and product-design review.
 
 - For motion decisions, implementation, review, and gestures, use `motion-and-interaction.md`; it is the authoritative motion reference.
-- For commercial tactics and source evidence, use the topic-specific Revenue-Centric Design references.
+- For commercial tactics and sourced records, start from the matching topic reference — e.g. `conversion-and-landing-pages.md`, `onboarding-and-activation.md`, `pricing-and-monetization.md` — or the full routing table in `../SKILL.md`.
 
 ## Coherence: align every layer to the outcome
 
@@ -36,7 +36,7 @@ Ask for data, permissions, payment, and commitment at the moment their purpose i
 
 ### Familiarity
 
-Use conventions to make behavior predictable. Things that look alike should behave alike; controls should live near what they affect. Break a familiar pattern only with evidence that the alternative improves the target outcome.
+Use conventions to make behavior predictable. Affordances suggest what can be acted on, signifiers communicate state and where interaction happens, and mapping places controls near the objects they affect; things that look alike should behave alike. Break a familiar pattern only with evidence that the alternative improves the target outcome.
 
 ### Flexibility
 
@@ -67,7 +67,7 @@ Ensure every view answers:
 Use hierarchy rather than explanation debt:
 
 - Put the primary action where the reading and task flow lead naturally.
-- Use contrast, size, position, spacing, and grouping to encode priority.
+- Use contrast, size, position, spacing, and grouping to encode priority, applying the classical contrast, repetition, alignment, and proximity relationships.
 - Keep a control close to the object or state it changes.
 - Prefer specific labels such as “Export report” over generic labels such as “Continue.”
 - Keep a primary task visible instead of moving it into overflow merely to make the screen look clean.
@@ -107,6 +107,8 @@ Interactive documentation should let consumers experience states and copy a corr
 ### Typography
 
 - Build hierarchy from size, weight, line height, tracking, and measure together.
+- Generate a type scale from a modular ratio when no product ramp exists; `design-primitives-and-tokens.md` carries candidate ratios.
+- Treat published measure and leading ranges as starting points, not laws; `design-primitives-and-tokens.md` carries the candidate values.
 - Tighten tracking and leading gradually as display text grows; keep body text comfortably readable.
 - Use optical sizing where the font supports it.
 - Prefer relative units so text scaling and zoom do not break the layout.
@@ -123,9 +125,9 @@ Interactive documentation should let consumers experience states and copy a corr
 ### Space and shape
 
 - Let proximity express relationship and whitespace express separation.
-- Reuse a small spacing and radius vocabulary unless the content creates a real exception.
+- Reuse a small spacing and radius vocabulary unless the content creates a real exception: pick one base step and build the ladder from it, composing layout on an explicit grid; `design-primitives-and-tokens.md` carries ladder candidates.
 - Align optical weight, not only mathematical boxes; icons and text often need visual correction.
-- Preserve scanability and functional-data priority when adding decoration.
+- Preserve scanability and functional-data priority when adding decoration; favor signal over ink (Tufte's data-ink ratio).
 
 ### Depth and materials
 
@@ -153,7 +155,7 @@ Match the method to the uncertainty:
 - **Usability:** observed task success, time, error and recovery behavior—not stated preference alone.
 - **Accessibility:** semantic inspection plus keyboard, screen-reader, zoom, contrast, and preference-mode checks.
 - **Commercial behavior:** funnel events tied to a defined journey, cohort retention, revenue quality, refunds, support burden, and guardrails.
-- **Causal claims:** controlled experiments with a predeclared primary metric, guardrails, sample-size rationale, and full test duration.
+- **Causal claims:** controlled experiments — use `metrics-and-experimentation.md` for test design, sample-size discipline, and stopping rules.
 
 Segment carefully. Warm audiences, existing customers, cold traffic, and different awareness levels are not interchangeable baselines. A local conversion lift can be harmful if it worsens activation, retention, refunds, trust, or accessibility.
 

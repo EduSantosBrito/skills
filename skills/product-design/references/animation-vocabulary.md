@@ -13,7 +13,7 @@ For each lookup:
 
 ## Provenance and synchronization
 
-This vocabulary is adapted from Emil Kowalski's animation vocabulary; see `../SOURCES.md`. The glossary is a curated snapshot that mirrors the project's `/vocabulary` page. Keep the reference and page in sync when either changes.
+This vocabulary is adapted from Emil Kowalski's animation vocabulary; see `../SOURCES.md`. It is a frozen snapshot of the upstream repository's `/vocabulary` page at the revision pinned there, not a live mirror kept in sync.
 
 ## Glossary
 

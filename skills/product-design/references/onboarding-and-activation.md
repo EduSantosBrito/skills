@@ -19,7 +19,7 @@
 **Decision.** Technical founders track the wrong onboarding metrics; signups, session time, and tour completion all flatter you without proving the user reached value.
 **Use when.** You're judging onboarding by signups, time-in-product, or "completed the tour."
 **Action.** Swap each vanity metric for its real counterpart: signups → activation rate, session time → time-to-first-useful-action (and its repetition), onboarding completion → D7 retention. Find your aha moment empirically: look at what every paying customer did in week one that churned users didn't (often a collaborative act — invite, share, comment). Anchor on TTV/time-to-value.
-**Evidence.** Userpilot benchmark (547 companies): avg TTV 1d 12h 23m; top performers under 5 min. SaaS activation rate avg 30–37%, top quartile 40%+, under 20% = structural problem. D7 retention avg 10–15%, over 30% is strong.
+**Evidence.** Vendor benchmark snapshots (perishable — recheck before relying on them): Userpilot benchmark (547 companies): avg TTV 1d 12h 23m; top performers under 5 min. SaaS activation rate avg 30–37%, top quartile 40%+, under 20% = structural problem. D7 retention avg 10–15%, over 30% is strong.
 **Source language.** "If you can't say how long your user takes from signup to aha moment, you're not measuring what matters."
 **Source.** [@richardrx · 2026-05-27](https://x.com/richardrx/status/2059616501544468624)
 

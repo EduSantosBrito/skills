@@ -1,6 +1,6 @@
 ---
 name: product-design
-description: Product-design guidance for user-facing interfaces and growth journeys. Use when work defines, prototypes, implements, or reviews interaction, visual hierarchy, motion, accessibility, conversion, or redesign.
+description: Product-design guidance for user-facing interfaces and growth journeys. Use when work defines, prototypes, implements, or reviews interaction, visual hierarchy, motion, accessibility, conversion, onboarding, pricing, churn, positioning, GTM, or redesign.
 argument-hint: "<question, artifact, or review target>"
 license: Mixed; see LICENSE-emilkowalski, LICENSE-revenue-centric-design, LICENSE-taste, and SOURCES.md
 metadata:
@@ -31,7 +31,7 @@ These constraints outrank every tactic in the references:
 2. **Agency.** Keep choices, material consequences, cancellation, and recovery understandable. Defaults may reduce effort; they must preserve informed consent.
 3. **Truth.** Use supportable claims and real proof. Label mock content and data. Never fabricate urgency, testimonials, ratings, comparison data, or experiment results.
 4. **Accessibility.** Keyboard, pointer, touch, screen-reader, contrast, text scaling, reduced-motion, and reduced-transparency behavior are part of the feature where applicable.
-5. **Evidence.** Treat source anecdotes, aesthetic heuristics, and named behavioral mechanisms as hypotheses. Preserve their source and validate consequential claims in the actual product.
+5. **Evidence.** Treat source anecdotes, aesthetic heuristics, and named behavioral mechanisms as hypotheses. Preserve their source and validate consequential claims in the actual product. External statistics and vendor benchmarks are perishable evidence: keep their source visible, with its date where known, and treat them as context, not evergreen facts.
 
 ## Design read
 
@@ -82,6 +82,7 @@ Load only the branches needed for the current decision, but load every branch th
 | When the task is about | Open |
 | --- | --- |
 | General interface architecture, hierarchy, states, components, visual craft, or ethical design | `references/foundations.md` |
+| Choosing or defining design tokens, spacing/type/color scales, or other primitive values | `references/design-primitives-and-tokens.md` |
 | Visual direction for landing pages, portfolios, campaigns, or anti-template review | `references/visual-direction-and-anti-defaults.md` |
 | Modernizing an existing interface, preserving a brand, or approving an overhaul | `references/redesign.md` |
 | Motion, easing, gestures, continuity, performance, materials, or animation review | `references/motion-and-interaction.md` |

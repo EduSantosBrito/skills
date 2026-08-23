@@ -15,7 +15,7 @@ This skill consolidates and deduplicates material from the following sources.
 - Repository: <https://github.com/heliocosta-dev/revenue-centric-design>
 - Revision: `6fa20cb4f91fa97bce9197be3f78b168784eb772`
 - Original author of the underlying ideas and coined term: Richard ([@richardrx](https://x.com/richardrx)).
-- Adaptation: all 101 source-derived principles were retained in topic references. Editorial labels were normalized to Decision / Use when / Action / Evidence / Source, and a shared evidence boundary was added. Large local media assets were replaced by stable links to the exact upstream revision.
+- Adaptation: Every Revenue-Centric Design record was mapped into topic references under a shared Decision / Use when / Action / Evidence / Source field set, with optional Source language and Visual fields retained where a record preserves a canonical quotation or source imagery, plus a shared evidence boundary. Philosophy references lead records with Use when and separate fields with em dashes; tactical topic references lead with Decision, use period separators, and may add Entry pointer and Application rule sections. The earlier 10-principle draft was retired in place; its surviving framings (every change as an experiment, the Swiss-army-knife cost warning, and cancellation beginning before intent) remain carried by the existing hypothesis/KPI, feature-discipline, and first-session-churn records. Large local media assets were replaced by stable links to the exact upstream revision.
 - License: custom source-available terms. The complete terms are preserved in `LICENSE-revenue-centric-design` and apply to copies and derivatives. In particular, attribution must remain and the material may not be used for gambling, betting, casino, loot-box, or other real-money games-of-chance work.
 
 ## Taste Skill
@@ -32,6 +32,7 @@ This skill consolidates and deduplicates material from the following sources.
 - [Agents with Taste](https://emilkowal.ski/ui/agents-with-taste) by Emil Kowalski: used as an editorial model for turning subjective craft into scenario, decision, rationale, and verification. Article prose is not copied; overlapping concrete motion guidance is grounded in the MIT-licensed Emil Kowalski skills above.
 - Matt Pocock skills: <https://github.com/mattpocock/skills>, revision `84fdeffd12f2ee307994d1eb6feb48173b6e0502`, especially `skills/productivity/writing-for-agents`. Used for stage-aware invocation, context pointers, completion criteria, progressive disclosure, leading concepts, positive instructions, and single sources of truth. No Matt Pocock source file is copied into this package.
 - User-provided `frontier-coding-agent-system-prompt.md`: used by the original adaptation as an editorial model for coherence, decision ownership, evidence, endpoint verification, and concise operational rules. No license was supplied for redistribution, so this package does not include that file.
+- Design-fundamentals and primitive-vocabulary anchors (idea level; no text copied): Don Norman (affordance, signifier, mapping), Robin Williams (contrast, repetition, alignment, proximity), Josef Müller-Brockmann (grid systems), Edward Tufte (data-ink ratio), Matthew Butterick's *Practical Typography*, Nathan Curtis's design-token taxonomy, Tim Brown's modular type scales, and the W3C Design Tokens Community Group format. These inform `references/design-primitives-and-tokens.md` and the terminology in `references/foundations.md`.
 
 ## Adaptation record
 
@@ -39,3 +40,4 @@ This skill consolidates and deduplicates material from the following sources.
 - Wayfinder-led rewrite: 2026-08-07
 - Intended runtime: portable Agent Skills installations with a Wayfinder-led workflow
 - Distribution note: this directory contains material under different licenses. Do not represent the complete directory as MIT-only or as OSI-approved open source.
+- 2026-08-24 revision: Revenue-Centric Design record labels unified on a shared field set; representative vendor benchmarks labeled as perishable evidence; design-primitives reference added; earlier 10-principle draft retired.
