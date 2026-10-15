@@ -87,8 +87,12 @@ Load only the branches needed for the current decision, but load every branch th
 | Modernizing an existing interface, preserving a brand, or approving an overhaul | `references/redesign.md` |
 | Motion, easing, gestures, continuity, performance, materials, or animation review | `references/motion-and-interaction.md` |
 | Naming an animation effect | `references/animation-vocabulary.md` |
+| Mobile web, touch input, viewport height, input zoom, safe areas, or overscroll | `references/mobile-web.md` |
+| Stress-testing extreme, missing, or localized content, empty or huge data, or layout robustness | `references/interface-stress-testing.md` |
 | Explicitly choosing, recommending, installing, or replacing a frontend library | `references/ui-library-selection.md` |
 | Landing pages, hero copy, CTA, social proof, or conversion | `references/conversion-and-landing-pages.md` |
+| Checkout, signup or lead forms, field count, fees, or abandonment | `references/checkout-and-forms.md` |
+| Dashboards, KPI selection, or data visualization | `references/dashboards-and-data-viz.md` |
 | First run, empty states, trials, time-to-value, or activation | `references/onboarding-and-activation.md` |
 | Cancellation, support burden, churn, retention, or NRR | `references/churn-and-retention.md` |
 | Pricing, packaging, trials, upgrades, or monetization | `references/pricing-and-monetization.md` |

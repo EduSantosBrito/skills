@@ -2,7 +2,7 @@
 
 ## Start here
 
-**Entry pointer.** Use this reference when diagnosing churn, payback failure, weak retention, support-driven churn, one-time-job products, upgrade communication, switching cost, or cancellation. Start with **Find where churn begins** to locate the causal mismatch; use **Compound retained value** to build ongoing product and organizational dependence; use **Recover before exit** for proactive migration and the final cancellation conversation.
+**Entry pointer.** Use this reference when diagnosing churn, payback failure, weak retention, support-driven churn, one-time-job products, upgrade communication, switching cost, or cancellation. Start with **Find where churn begins** to locate the causal mismatch, the leaking funnel stage, or the revenue a fix retains; use **Compound retained value** to build ongoing product value and organizational dependence; use **Recover before exit** for proactive migration and the final cancellation conversation.
 
 **Application rule.** Select the source record whose **Use when** matches the case, then keep its **Decision**, **Action**, evidence, caveats, visuals, source language, and source together. Records that overlap remain separate because they are independently sourced.
 
@@ -14,6 +14,26 @@
 **Action.** Both are the wrong place — the decision was made earlier. Activation fixes both: shrink TTV and you retain more AND get each customer across the payback line before they vanish. A customer who dies in month 2 with a 4-month payback never closes the account. Caveat: not all churn is activation (price, a bad channel exist) — but before chasing cheaper CAC, count how many customers die before repaying what they cost.
 **Source language.** "A customer who dies before repaying his CAC is a bill you paid and never collected."
 **Source.** [@richardrx · 2026-06-30](https://x.com/richardrx/status/2071931705573748896)
+
+### Funnel leak — form a first hypothesis for each symptom before fixing
+**Decision.** The post names three common SaaS funnel holes and a likely explanation for each — starting hypotheses, not an exhaustive list or an automatic verdict. (1) Cancellation in months 1–2: missing onboarding (a product problem — shorten the path to value) or a landing page that promised the wrong thing and brought off-ICP users (a marketing problem — tighten the promise). (2) Many trials, few paid: a paywall at the wrong moment or a broken value ladder. (3) Many visits, few signups: a confused ICP or a generic value proposition — but check the acquisition source first; copy cannot save the wrong traffic.
+**Use when.** You need to triage where the funnel is leaking.
+**Action.** Use the symptom to choose what to investigate first: month-one churn → activation and expectation; trials that do not convert → paywall timing and value ladder; visits without signups → ICP, positioning, and traffic source. Confirm with local research and data before assigning an owner, and rule out other explanations such as failed payments, price, seasonality, or a job the customer has finished. Where several causes mix, the post's order is: a clear ICP and a good offer first, then an experience aligned with the promise. **Churn cause** below separates activation, perceived-value, and interface churn.
+**Evidence.** Benchmarks quoted in the post (Kyle Poyar with ChartMogul and ProductLed, January; US; perishable): median free-to-paid conversion 8%; trial without card good at 4–6%, great at 10–15%; trial with card good at 25–35%. These come from a different dataset than the ChartMogul figures in `pricing-and-monetization.md`; compare each with your own cohorts rather than with each other.
+**Source.** [@richardrx · 2026-08-05](https://x.com/richardrx/status/2085056354360729949)
+
+### Churn cause — test activation, perceived value, and interface as hypotheses
+**Decision.** The post traces most churn to three causes, each with a distinct fix; treat them as starting hypotheses, not a complete taxonomy. (1) Bad onboarding → gradual, guided immersion in what users value most, a progress bar that uses the Zeigarnik effect (incompleteness nags), and targeted tooltips on unexplored features. (2) Missing perceived value → show the user's ROI in a simple dashboard (Grammarly shows the words it helped with), promote feature discovery continuously, and build community. (3) A hard or confusing interface → a proper product-design project.
+**Use when.** Churn is high and you do not know which cause applies.
+**Action.** Segment leavers first: users who never reached value (activation), users who reached it and still left (perceived value), and users who struggled (interface). Confirm the cause with exit research, support data, and behavior, and keep other explanations open — failed payments, price, seasonality, or a completed job. Each confirmed cause has a different owner and fix; do not treat all churn as one problem.
+**Source.** [@richardrx · 2025-12-17](https://x.com/richardrx/status/2001408166404530231)
+
+### Churn arithmetic — translate an onboarding fix into retained revenue
+**Decision.** A churn reduction can be expressed as retained revenue from the existing base, which makes onboarding work legible to a numbers-driven founder — with no new traffic and no new feature.
+**Use when.** Justifying onboarding investment with numbers.
+**Action.** Keep the units explicit: monthly cancellations = base × monthly churn; prevented cancellations = cancellations × relative reduction; retained MRR = prevented cancellations × ARPU; ARR run-rate = retained MRR × 12. For cohort value instead, multiply retained MRR by the average customer lifetime in months. Use your own base, churn, ARPU, and lifetime; the post adds that lower churn also raises valuation because every growth action then runs with more margin. Read with "Translate churn points into LTV" in `metrics-and-experimentation.md`.
+**Evidence.** The post's single worked example, not a benchmark: 6% monthly churn on 900 users at R$300 ARPU is 54 cancellations (R$16,200 MRR) a month; a restructured onboarding (contextual welcome, empty state, activation checklist) cut cancellations by about 30%, retaining about 16 accounts and R$4,800 MRR — a R$57,600 ARR run-rate, or R$52,800 over the post's stated 11-month average lifetime.
+**Source.** [@richardrx · 2026-03-19](https://x.com/richardrx/status/2034571753263939621)
 
 ### Expectation debt — align the landing-page promise with delivery
 **Decision.** If the LP promises one thing and the product delivers another, you create an expectation debt that charges interest every day the user thinks "this isn't what I expected" — and the disappointment is pre-programmed even if the product is excellent.
@@ -40,7 +60,7 @@
 **Decision.** Churn that looks like a product problem is often a language problem: a technical founder writes product and sales copy in jargon, the ICP buys on a leap of faith, never perceives value, accumulates small disappointments, and cancels — looking like a missing feature on the dashboard.
 **Use when.** Churn is high and you've already revised onboarding and product — revise language and structure next.
 **Action.** Watch two biases: the curse of knowledge (you know too much and forget the other person doesn't) and the easy-speech bias (simple language reads as more trustworthy and raises awareness). Rewrite dense, jargon-heavy copy into plain language even for complex topics.
-**Visual.** Side-by-side: a dense, legalese contract clause (red X) vs. a plain-language rewrite "In this contract you authorize the bank…" (green check), with an "Easy-speech bias" callout. — [source media](https://raw.githubusercontent.com/heliocosta-dev/revenue-centric-design/6fa20cb4f91fa97bce9197be3f78b168784eb772/assets/2041829519611371727__1.jpg)
+**Visual.** Side-by-side: a dense, legalese contract clause (red X) vs. a plain-language rewrite "In this contract you authorize the bank…" (green check), with an "Easy-speech bias" callout. — [source media](https://raw.githubusercontent.com/heliocosta-dev/revenue-centric-design/1942760c2242f609bf63ce2c97204f5a1791bd68/assets/2041829519611371727__1.jpg)
 **Source language.** "On the dashboard it looks like a missing feature; it was a mismatch between your discourse and their understanding."
 **Source.** [@richardrx · 2026-04-08](https://x.com/richardrx/status/2041829519611371727)
 
@@ -51,6 +71,13 @@
 **Use when.** Designing for retention/lock-in, or explaining why a useful product still churns.
 **Action.** Engineer switching cost deliberately — a "compound interest" that grows the product's value over time. Five levers: **muscle memory** (Superhuman/Photoshop shortcuts), **mental model** (Mac↔Windows, Gmail labels), **accumulated personalization** (Spotify playlists, home-screen layout), the **vault effect** (iCloud/Drive/years of WhatsApp), and **autopilot/habit** (variable-reward Skinner-box loops). Sunk cost holds them the way it holds an investor in a falling stock; habit can take months to install but is the difference between LTV of months and years.
 **Source.** [@richardrx · 2026-06-23](https://x.com/richardrx/status/2069382946214080985)
+
+### Ecosystem layers — let each layer of value raise the reason to stay
+**Decision.** The post reads iFood as Brazil's most sophisticated behavioral lock-in: each layer — delivery, data, credit, card — raises the psychological and operational cost of leaving through sunk cost and ecosystem dependence. Restaurants stay not because iFood is good, the post argues, but because leaving has become too expensive.
+**Use when.** Designing long-term retention through accumulated product value.
+**Action.** Learn from the mechanism, ethically: add layers of genuine value — data history, integrations, financial products, workflow embedding — so that staying keeps paying off and the value a customer would give up grows over time. Measure success as repeat value delivered, not as exit cost.
+**Ethical boundary.** Retention comes from repeated value, not captivity (see **Business alignment without dark patterns** in `foundations.md`). Keep cancellation, data export, and migration available and understandable; a layer whose only effect is to obstruct exit is a defect.
+**Source.** [@richardrx · 2026-03-27](https://x.com/richardrx/status/2037543117612630126)
 
 ### Game loop — engineer sustained engagement so CS is not a churn tax
 **Decision.** Customer Success is the tax you pay for a non-addictive product — if you need an army of CSMs to stop cancellations, the product failed. Your real competitor isn't another startup; it's boredom, and boredom has infinite CAC. The CNPJ buying your SaaS is the same brain that plays Candy Crush; reward neuroscience is identical. Win retention across three game-design phases.

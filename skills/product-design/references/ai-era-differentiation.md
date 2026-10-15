@@ -57,7 +57,7 @@
 
 **Action** — Fix the three recurring failures: (1) generic, inconsistent aesthetics (every component a different color, purple/green gradients on dark/white); (2) over-indexing on features instead of the value/pain they address; (3) barely showing the actual product. Build the hero to pass the 5-second test — what does this do, why care, what next.
 
-**Visual** — Supafast's "SaaS Hero Section Formula" — 5 elements with before/after copy: Headline (≤8 words, attack the #1 pain), Subheadline (show the transformation), Primary CTA (specific to outcome), Secondary CTA (low-commitment), Trust Bar (5 logos or one specific number) — [source media](https://raw.githubusercontent.com/heliocosta-dev/revenue-centric-design/6fa20cb4f91fa97bce9197be3f78b168784eb772/assets/2025246347587162602__q__1.jpg)
+**Visual** — Supafast's "SaaS Hero Section Formula" — 5 elements with before/after copy: Headline (≤8 words, attack the #1 pain), Subheadline (show the transformation), Primary CTA (specific to outcome), Secondary CTA (low-commitment), Trust Bar (5 logos or one specific number) — [source media](https://raw.githubusercontent.com/heliocosta-dev/revenue-centric-design/1942760c2242f609bf63ce2c97204f5a1791bd68/assets/2025246347587162602__q__1.jpg)
 
 **Source** — [@richardrx · 2026-02-21](https://x.com/richardrx/status/2025246347587162602)
 
@@ -81,7 +81,7 @@
 
 **Evidence** — Johnson & Goldstein (2003), *Science* — a mere "opt-out" default produced +90% organ-donation consent, proving small design choices move behavior.
 
-**Visual** — The Dunning-Kruger curve — confidence spikes at "Ignorant" (low knowledge), craters at "Cultured," and climbs toward "Expert," with a labeled "confidence gap" — [source media](https://raw.githubusercontent.com/heliocosta-dev/revenue-centric-design/6fa20cb4f91fa97bce9197be3f78b168784eb772/assets/2013264068518289753__2.jpg)
+**Visual** — The Dunning-Kruger curve — confidence spikes at "Ignorant" (low knowledge), craters at "Cultured," and climbs toward "Expert," with a labeled "confidence gap" — [source media](https://raw.githubusercontent.com/heliocosta-dev/revenue-centric-design/1942760c2242f609bf63ce2c97204f5a1791bd68/assets/2013264068518289753__2.jpg)
 
 **Source language** — "You can own all the cement in the world, but without the blueprint and structural engineering you're just a pile of gray concrete."
 

@@ -1,5 +1,7 @@
 # Motion and Interaction
 
+**Contents:** [Governing principles](#governing-principles) · [Motion gate](#motion-gate-decide-whether-motion-belongs) · [Timing and easing](#timing-and-easing) · [Response and direct manipulation](#response-and-direct-manipulation) · [Interruptibility and springs](#interruptibility-and-springs) · [Velocity, projection, and boundaries](#velocity-projection-and-boundaries) · [Spatial behavior](#spatial-behavior) · [Common patterns](#common-patterns) · [Rendering and performance](#rendering-and-performance) · [Materials and depth](#materials-and-depth) · [Accessibility](#accessibility) · [Review and audit](#review-and-audit) · [Verification](#verification)
+
 ## Scope
 
 Use this reference to:
@@ -213,27 +215,93 @@ A hold affordance may reveal progress with `clip-path` or scale over a deliberat
 
 Stagger can clarify order for a small, rare group. Start around 30–80ms between items, keep the total short, never delay interactivity, and remove movement under reduced-motion preferences.
 
+### Reveal as progressive enhancement
+
+Content is visible by default: without JavaScript, without browser support, under reduced motion, and when the script fails to initialize. Apply the hidden starting state only after the controller or observer is ready — for example, set the gating class from the same script that creates the observer. Copying a pattern that puts the gate class (such as `html.js`) in the markup or in an early inline script can leave content hidden when the later initialization fails.
+
+For a one-shot scroll reveal, reveal the element once and stop observing it:
+
+```css
+@media (prefers-reduced-motion: no-preference) {
+  .reveal-ready [data-reveal]:not(.is-in) { opacity: 0; transform: translateY(24px); }
+  [data-reveal] { transition: opacity 600ms var(--ease-out), transform 600ms var(--ease-out); }
+}
+```
+
+```js
+const targets = document.querySelectorAll('[data-reveal]');
+const io = new IntersectionObserver((entries) => {
+  for (const entry of entries) {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('is-in');
+      io.unobserve(entry.target);
+    }
+  }
+});
+document.documentElement.classList.add('reveal-ready'); // hidden state applies only from here
+targets.forEach((el) => io.observe(el));
+```
+
+The owning component disconnects the observer when it unmounts. Never animate required content while it is invisible or let a reveal stand between the reader and the text. Pause looping motion when it is off screen or the tab is hidden.
+
 ### Crossfade bridge
 
-When two states visibly double-expose during a crossfade, a small transient blur may help them read as one transformation. Blur can be expensive and reduce legibility; keep it subtle, profile it, and prefer a cleaner structural transition when available.
+When two states visibly double-expose during a crossfade, a small transient blur may help them read as one transformation. Blur can be expensive and reduce legibility; keep it subtle, profile it (`animation-performance.md` carries starting thresholds), and prefer a cleaner structural transition when available.
 
 ### Clip and reveal
 
 `clip-path: inset()` can create reveals, comparison sliders, and progress fills without changing layout. Compositor behavior varies by browser and effect; test rather than assuming it is free.
 
+### Tab indicator with a color change
+
+Separately timed color transitions across a tab list rarely land together. Instead, render a decorative copy of the tab list styled as the active state and clip it so only the active tab shows; animating the clip changes text and background in one motion:
+
+```css
+.tabs-active-copy {
+  clip-path: inset(0 60% 0 20%); /* set from the active tab's measured position */
+  transition: clip-path 250ms var(--ease-in-out);
+}
+```
+
+Keep the semantic tab list as the only interactive one, with its roles, selected state, and keyboard behavior. Hide the copy from assistive technology and pointer input (`aria-hidden="true"`, `inert`, `pointer-events: none`), recompute the clip when tab widths change through resizing, zoom, or translation, and switch without movement under reduced motion.
+
+### Entry without a mount flag
+
+`@starting-style` defines the state an element transitions from when it first renders, so an entry needs no JavaScript mount flag:
+
+```css
+.toast {
+  transition: opacity 400ms ease, transform 400ms ease;
+
+  @starting-style {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+}
+```
+
+Check support against the product's browser matrix. Where it is missing, set a mounted attribute after the first frame and transition from that, or let the element appear without an entry. A missing entry animation must never hide content.
+
+### Accordion and collapse
+
+Height has no transform equivalent here, so this is one of the few accepted layout animations. Keep it short (the source starts around 200ms) because every frame costs layout. Measure the content height, or use a headless primitive that exposes it, rather than animating to `auto`. An alternative that needs no measurement: transition the panel's `grid-template-rows` from `0fr` to `1fr`, with a single child that has `min-height: 0` and `overflow: hidden`; check browser support, interruption, and content that changes size while open. Use a transition so a toggle mid-animation retargets from the current height instead of restarting. Keep the trigger's expanded state in sync and remove collapsed content from focus order and the accessibility tree once it closes.
+
+### Programmatic reveal without a library
+
+When motion needs JavaScript control but not a dependency, the Web Animations API can match CSS performance:
+
+```js
+const reveal = element.animate(
+  [{ clipPath: 'inset(0 0 100% 0)' }, { clipPath: 'inset(0 0 0 0)' }],
+  { duration: 1000, fill: 'forwards', easing: 'cubic-bezier(0.77, 0, 0.175, 1)' }
+);
+```
+
+Keep the returned animation so you can reverse or cancel it on interruption, and skip or shorten it under reduced motion.
+
 ## Rendering and performance
 
-Prefer `transform` and `opacity` because browsers can often composite them without layout. Avoid animating layout properties every frame when an equivalent transform preserves semantics. This is a default, not proof of performance.
-
-Performance depends on browser, element size, layer promotion, filters, clipping, framework behavior, and concurrent work:
-
-- Profile the actual interaction under realistic CPU and page load.
-- Avoid `transition: all`; name the properties whose change is intentional.
-- Do not update an inherited CSS custom property every frame when it invalidates a large subtree; measure and update the narrowest owner.
-- Inspect the installed motion library before making claims about shorthand acceleration or thread ownership; implementations change.
-- Use `will-change` sparingly and shortly before known motion. Excess layers consume memory.
-- Separate input latency, script work, layout, paint, and compositing in the trace.
-- Test on representative lower-end and high-refresh hardware, not only a developer laptop.
+Prefer `transform` and `opacity`, name transitioned properties instead of `transition: all`, and judge smoothness from a trace on representative lower-end and high-refresh hardware. This is a default, not proof of performance. When motion drops frames, or when choosing a property, driver, or layer strategy on cost grounds, use `animation-performance.md`: it owns frame budgets, pipeline tiers, threads, framework pitfalls, paint-heavy effects, `will-change`, and jank diagnosis.
 
 Smoothness includes more than FPS. Large per-frame travel can strobe even at the display refresh rate, and coordinated properties can drift visibly while each remains “smooth.”
 

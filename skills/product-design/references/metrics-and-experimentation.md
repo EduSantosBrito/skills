@@ -11,6 +11,30 @@
 
 **Source** — [@richardrx · 2026-06-11](https://x.com/richardrx/status/2065082771987394651)
 
+## Read each product metric as one diagnosis, then read the whole panel
+**Use when** — A founder fixates on one number or conflates what each metric diagnoses.
+
+**Decision** — The post maps each metric to the question it mainly hints at: ARR to size (not necessarily health); burn rate to risk (time until death); CAC to efficiency (pushing it down can bring a less-qualified cohort); DAU/MAU to engagement; LTV to whether customers see value; churn to fit; NRR to real growth; gross margin to the model; runway to survival. Like a blood panel, the readings are complementary clues, not a causal diagnosis: one bad reading can be critical, and only the whole panel suggests health.
+
+**Action** — Use each metric as a lead for its layer, then read the full panel and the local evidence behind it before prescribing a fix: ARR alone cannot prove health, low CAC can hide a weak cohort, and strong growth without margin or runway can still be fatal.
+
+**Evidence** — The post's warning thresholds are practitioner rules of thumb, not universal benchmarks: DAU/MAU under 20% is a bad sign; NRR above 100% is good; SaaS gross margin under 70% is a problem (AI wrappers excepted); runway under 12 months is danger. Calibrate them to your business model and stage.
+
+**Source** — [@richardrx · 2026-01-12](https://x.com/richardrx/status/2010675817483817384)
+
+## Model the retention metric before choosing a game mechanic
+**Use when** — You are adding gamification by copying a mechanic instead of finding the metric that compounds engagement.
+
+**Decision** — Model the retention metric before borrowing a mechanic. In Duolingo's case — a product meant for daily use — that meant optimizing the number that moved daily active users (DAU). Duolingo copied game mechanics twice and failed: a Gardenscapes-style moves counter was neutral, and a referral program copied from Uber gained only 3% because its reward excluded the best users. It then modelled which number to move — bucketing users by engagement and simulating +2% a quarter for three years — and current-user retention rate (CURR) had about five times the impact of the next-best metric. Gamification worked once aimed at CURR.
+
+**Action** — Start from how often the user's task naturally recurs — daily, weekly, or yearly — and the useful result each return delivers; choose the retention metric at that cadence and set guardrails, such as task success, complaints, and opt-outs, so the work never chases opens that deliver no value. Gamification is optional. If you use it, points, badges, and leaderboards are only the free sample of a much larger set of gamification mechanics. Three useful ones: competition with a defined start, middle, and end; progress bars as trajectory achievement, not just onboarding; and content unlocked by engagement (a forecast panel that opens after 30 real entries — a ladder, not a paywall). Design each mechanic for the user's own progress, with opt-out and without punishing absence.
+
+**Evidence** — Duolingo's results as reported in the post, specific to one consumer-learning product: CURR +21% over four years, daily churn of best users down 40%+, DAU ×4.5. Leaderboards alone added 17% total learning time and tripled highly engaged learners after users competed with others of similar prior-week engagement (automatic opt-in, a default effect, with no extra tasks).
+
+**Visual** — Duolingo's DAU curve from mid-2018 to mid-2022, marked "Started working on CURR" at the inflection, with a 4.5× arrow from there to the top right — [source media](https://raw.githubusercontent.com/heliocosta-dev/revenue-centric-design/1942760c2242f609bf63ce2c97204f5a1791bd68/assets/2081714430811730162__1.jpg)
+
+**Source** — [@richardrx · 2026-07-27](https://x.com/richardrx/status/2081714430811730162)
+
 ## Require sufficient power before an A/B test
 **Use when** — You're in traction or survival stage, ran a test for a week, saw "variant B won by 12%," and want to ship it everywhere.
 

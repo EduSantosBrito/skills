@@ -85,7 +85,7 @@ Apply changes in leverage and risk order. Stop when the requested outcome is met
 - Does the proposed density work with realistic content?
 - Does the interaction explain state change without delaying frequent work?
 
-**Comparison:** compare materially different directions against the same content and endpoint criteria.
+**Comparison:** compare materially different directions against the same content and endpoint criteria. Before building, name each direction and the axis it explores — layout, density, personality, motion, or interaction model — with no two directions at the same position on one axis. Directions that differ only in accent color or copy are one direction. The `prototype` workflow owns the comparison harness.
 
 **Handoff:** capture the verdict in the owning issue or specification; keep the throwaway implementation out of the production branch.
 

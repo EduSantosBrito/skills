@@ -38,6 +38,8 @@ Rules:
 - Start from the platform or installed product ramp. Without one, generate a modular scale (ratio candidates: 1.125, 1.25, 1.333) and name steps semantically (`body`, `heading`, `display`) rather than by pixel value.
 - Body measure lands near 45–75 characters; line height sits around 1.4–1.6 for body text and tightens toward display sizes.
 - Prefer relative units so text scaling and zoom survive; use tabular numbers where digits change in place.
+- Estimate display-headline wrapping before committing to copy: characters per line ≈ line width in CSS px ÷ (font size in CSS px × k). Taste Skill's starting values for Latin display faces are k ≈ 0.40 for condensed faces, ≈ 0.50 for ordinary grotesks and serifs with tight tracking, and ≈ 0.58 for wide faces or all caps — heuristics, not measured constants. Example: a 350px line at 44px gives about 350 ÷ (44 × 0.5) ≈ 16 characters per line. Check the actual wrap with the real font and its fallback, after font loading, under localization (CJK and right-to-left scripts behave differently), with letter spacing, and at zoom. When the copy does not fit, adjust measure, size, or the layout; tightening the wording is fine, but do not drop needed content or shorten translations to hit a character quota.
+- Choose heading or paragraph markup by meaning, not visual size: a large introductory sentence or quotation is a paragraph or blockquote, and a heading names the section that follows.
 
 ## Color
 

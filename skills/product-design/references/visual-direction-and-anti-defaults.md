@@ -4,13 +4,32 @@ Use this reference when a templated visual result is a material risk in landing 
 
 **Anti-default:** find decisions made by habit rather than by the brief. This is a diagnostic pass, not a house style. A familiar pattern is correct when it serves the content, audience, system, and outcome.
 
+**Removal is not enough.** Stripping familiar devices without putting content, hierarchy, or identity in their place can leave a thin page that is just as guessable — an "avoidance aesthetic" anyone could predict from the category plus a list of things to avoid. Generated-page tells are dated and contextual: most began as good ideas and became tells by appearing everywhere without a reason. Judge each device by what it explains or does in this context, not by a banlist. The generative step below comes first so that the checks have something specific to protect.
+
 ## Workflow
 
-1. **Establish direction.** Read the artifact and choose the three qualitative axes in [Direction evidence](#direction-evidence). **Complete when:** type, color, space, shape, imagery, and motion can all be explained by the same direction.
-2. **Identify the system authority.** Distinguish an owned design system, an aesthetic reference, and a platform material using [System or aesthetic](#system-or-aesthetic). **Complete when:** the visual source is classified as a design system, an aesthetic reference, or a platform material; any approximation is labeled, and any new-library evaluation is explicitly authorized.
-3. **Run the anti-default pass.** Start only after the page has a coherent content and journey structure. Apply every relevant check in [Anti-default checks](#anti-default-checks), and correct a pattern only when both the observation and its consequence are real. **Complete when:** every applicable check has been run, and every correction is tied to a real observation and consequence.
-4. **Specify responsive composition.** Cover every non-trivial layout with [Responsive checks](#responsive-checks). **Complete when:** width, height, text size, input method, and content-length changes each have an intentional, legible result.
-5. **Verify the rendered endpoint.** Apply [Endpoint verification](#endpoint-verification). **Complete when:** all six questions pass and the result is coherent and specific to its context, rather than merely different from common templates.
+1. **Derive the subject idea.** Build the inventory and idea sentence in [Subject idea](#subject-idea) from the brief and the subject, inside any brand or system authority that already exists. **Complete when:** the idea traces to recorded facts, and each fact is marked as observed or assumed.
+2. **Establish direction.** Read the artifact and choose the three qualitative axes in [Direction evidence](#direction-evidence). **Complete when:** type, color, space, shape, imagery, and motion can all be explained by the same direction.
+3. **Identify the system authority.** Distinguish an owned design system, an aesthetic reference, and a platform material using [System or aesthetic](#system-or-aesthetic). **Complete when:** the visual source is classified as a design system, an aesthetic reference, or a platform material; any approximation is labeled, and any new-library evaluation is explicitly authorized.
+4. **Run the anti-default pass.** Start only after the page has a coherent content and journey structure. Apply every relevant check in [Anti-default checks](#anti-default-checks), and correct a pattern only when both the observation and its consequence are real. **Complete when:** every applicable check has been run, and every correction is tied to a real observation and consequence.
+5. **Specify responsive composition.** Cover every non-trivial layout with [Responsive checks](#responsive-checks). **Complete when:** width, height, text size, input method, and content-length changes each have an intentional, legible result.
+6. **Verify the rendered endpoint.** Apply [Endpoint verification](#endpoint-verification). **Complete when:** all six questions pass and the result is coherent and specific to its context, rather than merely different from common templates.
+
+## Subject idea
+
+A direction is a way of composing; an idea is what makes the page belong to this subject and no other. Derive it from the subject before choosing styling.
+
+**Inventory.** List facts that belong to this product, organization, or audience and not to its category: its name and what the name means; its place and what that place looks like; its materials and colors; the numbers in the brief; the constraint it lives with; its rituals and hours; its output; and the printed or physical things of its world, such as a ticket, a label, or a manual. Collect enough to choose from — the source works from eight to twelve, which is a recipe, not a minimum. Mark each fact as observed (from the brief, the product, or research) or assumed, and never invent history, places, or details to fill the list.
+
+**Idea sentence.** Write it before styling:
+
+> On this page, **[a fact about this subject]** becomes **[a visual or interaction device]**.
+
+For example: on a page for a furniture maker that cuts each seat from one board, the grain of the customer's own board becomes the page's recurring image.
+
+**Competitor test.** Put the nearest real competitor in the sentence. If it still works, the idea belongs to the category; look again at the inventory. Use the test to judge specificity, not as a gate: an app surface or a standard system screen, where consistency and familiarity win, need no distinctive idea, and brand or system authority still governs the result.
+
+**One live thing.** A candidate, not a requirement: one interaction made from the idea, when it demonstrates value, proves a claim, or performs a real task — for example, choosing a wood and seeing the chair in it, or setting a loan amount and reading the real monthly figure. Build it only with truthful content, operable by keyboard and touch, with a plain fallback that works without script, and never blocking reading. It is not a minimum quantity of interaction or an excuse for more ornament or motion. An existing product can show a truthful preview of itself; never fake live data.
 
 ## Direction evidence
 
@@ -54,7 +73,7 @@ Use the source’s actual authority:
 
 **Rationale:** mechanical repetition makes unrelated sections appear equivalent and exposes template-driven construction.
 
-**Check:** name the job and layout family of each section. Repeated families need a structural reason. Replace accidental runs with a composition suited to the next content job rather than arbitrary decoration.
+**Check:** name the job and layout family of each section. Repeated families need a structural reason. Replace accidental runs with a composition suited to the next content job rather than arbitrary decoration. To decide which sections exist and in what order on a marketing page, use **Section argument** in `conversion-and-landing-pages.md`.
 
 ### Hero discipline
 
@@ -110,6 +129,16 @@ Use the source’s actual authority:
 
 **Override:** a clearly labeled prototype may use mock content to answer its question. Keep that mock content from becoming production evidence by accident.
 
+**Open collections.** When the project has no imagery of its own, real pictures of the subject's world — its place, maps, materials, trade history, or museum objects of its kind — may exist in open collections such as Openverse, Wikimedia Commons, the Art Institute of Chicago, or the Metropolitan Museum of Art. These are examples, not endorsed sources. Search the inventory from [Subject idea](#subject-idea), not the category. For each candidate:
+
+1. Open the original item page, not only a search result or an aggregator entry.
+2. Check that its license allows the intended use, including commercial use and adaptation if you will crop, recolor, or combine it. CC0, public-domain, CC BY, and CC BY-SA items are candidates; attribution alone is not a license. CC BY-SA terms apply to the adapted image you publish, not automatically to the whole site.
+3. Check for personality rights, trademarks, and jurisdiction limits, such as public domain only in the United States, and for archive statements that replace a license.
+4. Record the creator, title, source URL, license and license link, version or retrieval date, and any edits you made; credit the item where the license requires it.
+5. When implementation is authorized, store the file through the project's approved asset pipeline rather than hotlinking it from the archive.
+
+A found picture shows the world around the subject. Never present it as the product, team, customers, place, or work of the organization the page is about; the truth boundary above remains authoritative. There is no minimum number of pictures, and a photograph is not always better than a drawing made for the subject.
+
 ### Copy register
 
 **Decision:** use one voice appropriate to the audience and page. Prefer concrete claims, verbs, labels, and proof over category slogans or ornamental microcopy.
@@ -148,3 +177,5 @@ Use the shortest checklist that covers the selected direction:
 4. Are claims, proof, assets, and data truthful or clearly labeled as mock?
 5. Does the composition remain understandable in relevant responsive, accessibility, and theme states?
 6. Was feel observed in a rendered artifact rather than inferred from static code alone?
+
+**Look and correct.** Answer the questions from rendered screenshots at the supported widths, not from the code's intent. Record what is visible separately from what the code was meant to do, and order problems by user impact using the direct review contract in `SKILL.md`. When implementation is authorized, fix the most important problems and look again at the new render; in a read-only review, report the fixes without editing. Screenshots cannot establish keyboard behavior, accessibility, interaction feel, or correctness; the runtime checks owned by the active workflow still apply.

@@ -85,6 +85,8 @@ The happy path is one state among many. Account for the states the component or 
 - narrow, wide, zoomed, long-content, localized, and text-scaled
 - keyboard, pointer, touch, screen reader, reduced motion, and reduced transparency
 
+To test the content and environment states with realistic extreme data, use `interface-stress-testing.md`; for touch, viewport, and safe-area behavior on phones, use `mobile-web.md`.
+
 Do not store visual state that can be derived from authoritative domain state. When optimistic UI is useful, define what happens if the effect fails or completes after the user leaves.
 
 ## Components as product boundaries

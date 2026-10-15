@@ -2,7 +2,7 @@
 
 ## Start here
 
-**Entry pointer.** Use this reference when diagnosing first-run experience, activation, time-to-value (TTV), trial conversion, early churn, onboarding friction, empty states, or pattern selection. Start with **Measure the real journey** when the failure point is uncertain; use **Deliver value early** to shape the shortest path to a first result; use **Place friction deliberately** to qualify or personalize without wasting effort; use **Build momentum and commitment** for progress, goals, and activation peaks; use **Select the mechanism** when choosing onboarding UI patterns.
+**Entry pointer.** Use this reference when diagnosing first-run experience, activation, time-to-value (TTV), trial conversion, early churn, onboarding friction, empty states, or pattern selection. Start with **Measure the real journey** when the failure point or the steepest drop before first value is uncertain; use **Deliver value early** to shape the shortest path to a first result; use **Place friction deliberately** to qualify or personalize without wasting effort; use **Build momentum and commitment** for progress, goals, and activation peaks; use **Select the mechanism** when choosing onboarding UI patterns.
 
 **Application rule.** Select the source record whose **Use when** matches the case, then keep its **Decision**, **Action**, evidence, caveats, visuals, source language, and source together. Records that overlap remain separate because they are independently sourced.
 
@@ -29,6 +29,12 @@
 **Action.** Three steps, no Figma: (1) write your version of the user journey in numbered steps, on paper; (2) open five real session recordings from the first 7 days and note what each user actually does, in order, with timing — including what they try and abandon; (3) lay both lists side by side. The report is in the differences; each divergence is a hypothesis to confirm or kill.
 **Source language.** "The user journey is what shows up in the replay; what's in Figma and Excalidraw is a hypothesis."
 **Source.** [@richardrx · 2026-05-08](https://x.com/richardrx/status/2052711138572263474)
+
+### Journey to value — fix the steepest drop, not the first step
+**Decision.** When activation falls, founders rush to the top of the funnel, but the leak is usually in the middle: the step where effort is already high and the user has not yet seen proof that it is worth it.
+**Use when.** Activation is low and you are not sure where the leak is.
+**Action.** (1) Define value as the first moment the user gets the promised result — measurable and visible in data. (2) List every step between signup and that moment: every screen, click, wait, and field; there are always more than you remember. (3) Measure the drop at each step and find the steepest fall. (4) Fix that drop first. (5) Diagnose why it happens: friction (cut it), confusion (direct attention), or ordering (deliver value before asking for effort). Write the map down; the version in your head always looks shorter. **Observed journey** above checks the map against real sessions.
+**Source.** [@richardrx · 2026-07-08](https://x.com/richardrx/status/2074814716824731651)
 
 ### Trial journey — diagnose value proof before pricing
 **Decision.** A trial is a test of value; if the user never proves value to themselves, no price or trial length saves it. Conversion fails for three diagnosable reasons.
@@ -57,7 +63,7 @@
 **Decision.** A good onboarding video isn't a manual (nobody reads their car's or iPhone's). It welcomes, builds connection, shows the product at a glance, and points to where value comes fastest.
 **Use when.** Designing first-run onboarding or a welcome video.
 **Action.** Aim it at cutting TTV, support tickets, and the lost feeling — not at educating. Length follows your ICP's urgency (someone rushing vs. someone happy to build Lego). No actor or fancy set — Richard recorded his in Screen Studio and it beat many big products'.
-**Visual.** A "Your account was created!" welcome modal with an embedded intro-video thumbnail and a single "Next" CTA — [source media](https://raw.githubusercontent.com/heliocosta-dev/revenue-centric-design/6fa20cb4f91fa97bce9197be3f78b168784eb772/assets/2067987722954735812__1.jpg)
+**Visual.** A "Your account was created!" welcome modal with an embedded intro-video thumbnail and a single "Next" CTA — [source media](https://raw.githubusercontent.com/heliocosta-dev/revenue-centric-design/1942760c2242f609bf63ce2c97204f5a1791bd68/assets/2067987722954735812__1.jpg)
 **Source language.** "Your product doesn't need a manual either — have you read your car's?"
 **Source.** [@richardrx · 2026-06-19](https://x.com/richardrx/status/2067987722954735812)
 
@@ -96,7 +102,7 @@
 **Use when.** Your activation flow is slow and you assume the product itself is the bottleneck.
 **Action.** Three iteration cycles, no product changes: (1) reduce cognitive load by grouping and standardizing what the user must fill in; (2) work with legal/compliance to strip everything required by habit but not by actual necessity; (3) invert the sequence so the user feels value before facing the heaviest step.
 **Evidence.** Major Brazilian payments platform: 24 days → 2.5 days to first sale (89.7% reduction), no product changes, no cutting of mandatory compliance steps.
-**Visual.** Month-by-month TTV table: Jan 24.2d → Feb 19.6d → Mar 16.8d → Apr 9.3d → May 2.5d, alongside accounts created / approved / new sellers per month. — [source media](https://raw.githubusercontent.com/heliocosta-dev/revenue-centric-design/6fa20cb4f91fa97bce9197be3f78b168784eb772/assets/2037583944283996418__1.jpg)
+**Visual.** Month-by-month TTV table: Jan 24.2d → Feb 19.6d → Mar 16.8d → Apr 9.3d → May 2.5d, alongside accounts created / approved / new sellers per month. — [source media](https://raw.githubusercontent.com/heliocosta-dev/revenue-centric-design/1942760c2242f609bf63ce2c97204f5a1791bd68/assets/2037583944283996418__1.jpg)
 **Source.** [@richardrx · 2026-03-27](https://x.com/richardrx/status/2037583944283996418)
 
 ## Place friction deliberately
@@ -122,7 +128,7 @@
 **Use when.** You're weighing an 8-field signup form against email + password.
 **Action.** Default to the minimal form and let qualification happen later, inside the product, from real behavior. Deciding where to add versus remove friction is what separates a product that grows from one that spins its wheels — but it's contextual ("it depends").
 **Evidence.** Same product, two founders: 8-field form (name, email, company, role, phone, segment, team size, how-did-you-hear) → 12% signup rate; email + password only → 34%.
-**Visual.** Annotated onboarding step (DevNoodles): an ICP/intent question flagged "Zeigarnik effect" (the step progress dots) and a B2C/B2B card selector flagged "Progress effect" — showing where each bias is engineered into the flow. — [source media](https://raw.githubusercontent.com/heliocosta-dev/revenue-centric-design/6fa20cb4f91fa97bce9197be3f78b168784eb772/assets/2042558822825239030__1.jpg)
+**Visual.** Annotated onboarding step (DevNoodles): an ICP/intent question flagged "Zeigarnik effect" (the step progress dots) and a B2C/B2B card selector flagged "Default effect" (the B2C card is pre-badged "Mais comum", "Most common") — showing where each bias is engineered into the flow. — [source media](https://raw.githubusercontent.com/heliocosta-dev/revenue-centric-design/1942760c2242f609bf63ce2c97204f5a1791bd68/assets/2042558822825239030__1.jpg)
 **Source.** [@richardrx · 2026-04-10](https://x.com/richardrx/status/2042558822825239030)
 
 ## Build momentum and commitment
@@ -147,7 +153,7 @@
 **Use when.** Your first onboarding step bundles setup, data import, team invites, and project creation — or demands a campaign-sized action.
 **Action.** Two biases fix it: (1) started-progress effect — show what the user has already done before what's left; a loyalty card with the first stamp pre-filled beats a blank 9-stamp card, because the starting point changes perceived distance to the finish; (2) small-steps effect — "Create one story today" has radically lower perceived cost than "post 5×/week," even when the underlying task is identical. Sequence effort so the user hits first value before noticing how much they invested; build momentum.
 **Evidence.** Instagram A/B test made "Create 5 new public reels" the first task — for someone who barely posts weekly, that's paralyzing.
-**Visual.** Bad first-step example: a weekly-progress checklist at "0% completed" whose top item is "Create 5 new public reels (0/5)." — [source media](https://raw.githubusercontent.com/heliocosta-dev/revenue-centric-design/6fa20cb4f91fa97bce9197be3f78b168784eb772/assets/2036461688505909250__1.jpg)
+**Visual.** Bad first-step example: a weekly-progress checklist at "0% completed" whose top item is "Create 5 new public reels (0/5)." — [source media](https://raw.githubusercontent.com/heliocosta-dev/revenue-centric-design/1942760c2242f609bf63ce2c97204f5a1791bd68/assets/2036461688505909250__1.jpg)
 **Source language.** "Asking for more isn't necessarily the problem; asking for all of it at once, with no progress anchor and no commitment ladder, is."
 **Source.** [@richardrx · 2026-03-24](https://x.com/richardrx/status/2036461688505909250)
 

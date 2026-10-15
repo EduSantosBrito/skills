@@ -27,7 +27,7 @@ Use this decision process:
 | Command menus | [cmdk](https://cmdk.paco.me) |
 | Toasts and notifications | [Sonner](https://sonner.emilkowal.ski) |
 | One-time-password and verification-code inputs | [input-otp](https://input-otp.rodz.dev) |
-| Customizable control panels | [Leva](https://github.com/pmndrs/leva); [DialKit](https://github.com/raphaelameaume/dialkit) is an alternative |
+| Customizable control panels | [Leva](https://github.com/pmndrs/leva); [DialKit](https://joshpuckett.me/dialkit) is an alternative |
 
 Use a maintained primitive library rather than hand-rolling focus management, keyboard interaction, dismissal, and accessibility for dialogs, menus, or popovers.
 
@@ -37,7 +37,7 @@ Use a maintained primitive library rather than hand-rolling focus management, ke
 | --- | --- |
 | Springs, layout animation, enter/exit orchestration, and gestures | [Motion](https://motion.dev) |
 | Animated numbers | [NumberFlow](https://number-flow.barvian.me) |
-| Animated text components | [Torph](https://torph.dev) |
+| Animated text components | [Torph](https://torph.lochie.me/) |
 | 3D globes | [Cobe](https://cobe.vercel.app) |
 | Dynamic Open Graph images from HTML/CSS | [Satori](https://github.com/vercel/satori) |
 | Syntax highlighting | [Shiki](https://shiki.style) |
@@ -48,7 +48,7 @@ Do not add a motion dependency for a simple hover, press, or fade that CSS trans
 
 | Capability | Default |
 | --- | --- |
-| Real-time or streaming time-series charts | [Liveline](https://github.com/planetarium/liveline) |
+| Real-time or streaming time-series charts | [Liveline](https://github.com/benjitaylor/liveline) |
 | General static or interactive charts | [Recharts](https://recharts.org) |
 
 Use Liveline when points arrive live and the chart advances with time; otherwise start with Recharts.

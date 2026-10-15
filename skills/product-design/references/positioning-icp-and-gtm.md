@@ -9,7 +9,7 @@
 
 **Evidence** — RepareCar: ~76k mechanic shops (honest TAM) → SAM ~47k → ~3% ≈ 1,414 shops ≈ R$1.6M ARR; current pace (~10 shops/day) ≈ 7% of SAM in 12 months.
 
-**Visual** — TAM/SAM/SOM concentric-circle diagram with definitions — [source media](https://raw.githubusercontent.com/heliocosta-dev/revenue-centric-design/6fa20cb4f91fa97bce9197be3f78b168784eb772/assets/2070140923380420796__1.jpg)
+**Visual** — TAM/SAM/SOM concentric-circle diagram with definitions — [source media](https://raw.githubusercontent.com/heliocosta-dev/revenue-centric-design/1942760c2242f609bf63ce2c97204f5a1791bd68/assets/2070140923380420796__1.jpg)
 
 **Source** — [@richardrx · 2026-06-25](https://x.com/richardrx/status/2070140923380420796)
 
@@ -83,7 +83,7 @@
 
 **Action** — Use the Bullseye framework (from the book *Traction*): three rings of priority. Inner ring = at most three highest-potential channels with total focus; middle ring = up to six channels you probe with small experiments; outer ring = everything plausible long-term, no active focus now. Choose between channels with an ICE Score (Impact, Confidence, Ease, each 0–10, divide by 3, prioritize). Crucial gap the book skips: scaling distribution onto a broken reception structure (LP, onboarding, first product steps) yields no growth — distribution and retention are simultaneous, not sequential.
 
-**Visual** — Bullseye as nested circles — What's Possible → What's Probable → What's Working — beside a "Marketing Framework for Startups" triangle (Prioritization, Testing, Quick Iteration). — [source media](https://raw.githubusercontent.com/heliocosta-dev/revenue-centric-design/6fa20cb4f91fa97bce9197be3f78b168784eb772/assets/2036035304868434115__1.jpg)
+**Visual** — Bullseye as nested circles — What's Possible → What's Probable → What's Working — beside a "Marketing Framework for Startups" triangle (Prioritization, Testing, Quick Iteration). — [source media](https://raw.githubusercontent.com/heliocosta-dev/revenue-centric-design/1942760c2242f609bf63ce2c97204f5a1791bd68/assets/2036035304868434115__1.jpg)
 
 **Source** — [@richardrx · 2026-03-23](https://x.com/richardrx/status/2036035304868434115)
 
